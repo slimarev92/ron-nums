@@ -122,12 +122,21 @@ export function GuessingGame() {
     });
 
     const submitGuess = (guess: number) => {
+        let releaseConfetti = false;
+
+        if (guess === secret()) {
+            releaseConfetti = true;
+            const audio = new Audio(goodAudio);
+
+            audio.play();
+        } else {
+            const audio = new Audio(wrongAudio);
+
+            audio.play();
+        }
+
         setTimeout(() => {
-            if (guess === secret()) {
-                const audio = new Audio(goodAudio);
-
-                audio.play();
-
+            if (releaseConfetti) {
                 confetti({
                     particleCount: 1000,
                     spread: 150,
@@ -137,10 +146,6 @@ export function GuessingGame() {
                         x: 0.5,
                     },
                 });
-            } else {
-                const audio = new Audio(wrongAudio);
-
-                audio.play();
             }
 
             let nextSecret = secret();
