@@ -139,12 +139,7 @@ export function GuessingGame() {
             if (releaseConfetti) {
                 confetti({
                     particleCount: 1000,
-                    spread: 150,
-                    angle: 270,
-                    origin: {
-                        y: -0.2,
-                        x: 0.5,
-                    },
+                    spread: 360,
                 });
             }
 
