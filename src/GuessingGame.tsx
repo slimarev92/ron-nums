@@ -124,7 +124,12 @@ export function GuessingGame() {
             if (guess === secret()) {
                 confetti({
                     particleCount: 600,
-                    spread: 360,
+                    spread: 180,
+                    angle: 270,
+                    origin: {
+                        y: -0.2,
+                        x: 0.5,
+                    },
                 });
             }
 
@@ -135,7 +140,7 @@ export function GuessingGame() {
             }
 
             setSecret(nextSecret);
-        }, 500);
+        }, 300);
     };
 
     return (
