@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import { splitProps, type JSX } from 'solid-js';
 
 const buttonVariants = cva(
-    'rounded-xl border-2 p-1 text-white text-shadow-md min-w-[6ch] shadow-md hover:opacity-70 cursor-pointer active:scale-90 transition-transform',
+    'rounded-xl border-2 p-1 text-white text-shadow-md min-w-[6ch] shadow-md hover:opacity-50 cursor-pointer active:scale-80 transition-transform',
     {
         variants: {
             variant: {
