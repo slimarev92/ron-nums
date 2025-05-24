@@ -20,7 +20,9 @@ export function DialogProvider(props: { children: JSXElement }) {
     return (
         <>
             <DialogContext.Provider value={dialogStore}>{props.children}</DialogContext.Provider>
-            <dialog open={!!dialogStore.currDialog}>{dialogStore.currDialog}</dialog>
+            <dialog class="m-auto w-svh h-svh" open={!!dialogStore.currDialog}>
+                {dialogStore.currDialog}
+            </dialog>
         </>
     );
 }
