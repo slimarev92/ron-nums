@@ -174,7 +174,7 @@ export function GuessingGame() {
 
     return (
         <div class="p-5 text-5xl mt-5">
-            <div class="flex gap-12 w-full items-center justify-center mb-20">
+            <div class="flex gap-12 w-full items-center justify-center mb-[20svh]">
                 <For each={DOTS.slice(0, secret())}>
                     {() => <div class="w-5 h-5">{dotOption()}</div>}
                 </For>
