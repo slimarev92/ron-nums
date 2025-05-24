@@ -2,6 +2,7 @@ import { createMemo, createSignal, For, useContext } from 'solid-js';
 import { DialogContext } from './DialogProvider';
 import { ALL_BUTTON_VARIANTS, Button, type ButtonVariants } from './Button';
 import confetti from 'canvas-confetti';
+import goodAudio from './good.mp3';
 
 const MAX_DOTS = 6;
 
@@ -121,10 +122,14 @@ export function GuessingGame() {
 
     const submitGuess = (guess: number) => {
         setTimeout(() => {
+            const audio = new Audio(goodAudio);
+
+            audio.play();
+
             if (guess === secret()) {
                 confetti({
-                    particleCount: 600,
-                    spread: 180,
+                    particleCount: 1000,
+                    spread: 150,
                     angle: 270,
                     origin: {
                         y: -0.2,
@@ -140,7 +145,7 @@ export function GuessingGame() {
             }
 
             setSecret(nextSecret);
-        }, 300);
+        }, 250);
     };
 
     return (
