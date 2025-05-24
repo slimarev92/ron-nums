@@ -125,7 +125,6 @@ export function GuessingGame() {
                 confetti({
                     particleCount: 600,
                     spread: 360,
-                    gravity: 1.1,
                 });
             }
 
@@ -140,7 +139,7 @@ export function GuessingGame() {
     };
 
     return (
-        <div class="p-5 text-5xl">
+        <div class="p-5 text-5xl mt-5">
             <div class="flex gap-12 w-full items-center justify-center mb-20">
                 <For each={DOTS.slice(0, secret())}>
                     {() => <div class="w-5 h-5">{dotOption()}</div>}
