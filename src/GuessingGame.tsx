@@ -120,21 +120,23 @@ export function GuessingGame() {
     });
 
     const submitGuess = (guess: number) => {
-        if (guess === secret()) {
-            confetti({
-                particleCount: 600,
-                spread: 360,
-                gravity: 1.1,
-            });
-        }
+        setTimeout(() => {
+            if (guess === secret()) {
+                confetti({
+                    particleCount: 600,
+                    spread: 360,
+                    gravity: 1.1,
+                });
+            }
 
-        let nextSecret = secret();
+            let nextSecret = secret();
 
-        while (nextSecret === secret()) {
-            nextSecret = getSecret();
-        }
+            while (nextSecret === secret()) {
+                nextSecret = getSecret();
+            }
 
-        setSecret(nextSecret);
+            setSecret(nextSecret);
+        }, 500);
     };
 
     return (
