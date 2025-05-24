@@ -3,6 +3,7 @@ import { DialogContext } from './DialogProvider';
 import { ALL_BUTTON_VARIANTS, Button, type ButtonVariants } from './Button';
 import confetti from 'canvas-confetti';
 import goodAudio from './good.mp3';
+import wrongAudio from './wrong.mp3';
 
 const MAX_DOTS = 6;
 
@@ -122,11 +123,11 @@ export function GuessingGame() {
 
     const submitGuess = (guess: number) => {
         setTimeout(() => {
-            const audio = new Audio(goodAudio);
-
-            audio.play();
-
             if (guess === secret()) {
+                const audio = new Audio(goodAudio);
+
+                audio.play();
+
                 confetti({
                     particleCount: 1000,
                     spread: 150,
@@ -136,6 +137,10 @@ export function GuessingGame() {
                         x: 0.5,
                     },
                 });
+            } else {
+                const audio = new Audio(wrongAudio);
+
+                audio.play();
             }
 
             let nextSecret = secret();
