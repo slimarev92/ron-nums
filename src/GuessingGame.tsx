@@ -160,15 +160,15 @@ export function GuessingGame() {
                     particleCount: 1000,
                     spread: 360,
                 });
+
+                let nextSecret = secret();
+
+                while (nextSecret === secret()) {
+                    nextSecret = getSecret();
+                }
+
+                setSecret(nextSecret);
             }
-
-            let nextSecret = secret();
-
-            while (nextSecret === secret()) {
-                nextSecret = getSecret();
-            }
-
-            setSecret(nextSecret);
         }, 250);
     };
 
