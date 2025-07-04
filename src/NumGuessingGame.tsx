@@ -5,7 +5,7 @@ import confetti from 'canvas-confetti';
 import goodAudio from './good.mp3';
 import wrongAudio from './wrong.mp3';
 
-const MAX_DOTS = 6;
+const MAX_DOTS = 10;
 
 const DOT_OPTIONS = [
     '🐖',
@@ -174,7 +174,7 @@ export function NumGuessingGame() {
 
     return (
         <div class="flex flex-col h-svh p-10">
-            <div class="flex gap-12 w-full items-center justify-center text-6xl">
+            <div class="flex gap-12 w-full items-center justify-center text-6xl flex-wrap">
                 <For each={DOTS.slice(0, secret())}>
                     {() => <div class="before:content-[attr(data-dot)]" data-dot={dotOption()} />}
                 </For>
