@@ -174,7 +174,7 @@ export function NumGuessingGame() {
 
     return (
         <div class="flex flex-col h-svh p-10">
-            <div class="flex gap-12 w-full items-center justify-center text-6xl flex-wrap">
+            <div class="flex gap-12 w-full items-center justify-center text-5xl flex-wrap">
                 <For each={DOTS.slice(0, secret())}>
                     {() => <div class="before:content-[attr(data-dot)]" data-dot={dotOption()} />}
                 </For>
