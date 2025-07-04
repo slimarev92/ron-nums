@@ -180,13 +180,13 @@ export function NumGuessingGame() {
                 </For>
             </div>
 
-            <div class="flex gap-4 p-2 w-full justify-center mt-auto">
+            <div class="flex flex-col md:flex-row gap-4 p-2 w-full justify-center mt-auto">
                 <For each={scrambledGuesses()}>
                     {(guess) => (
                         <Button
                             variant={randomButtonVariant()}
                             onClick={() => submitGuess(guess)}
-                            class="text-6xl aspect-[1/0.6]"
+                            class="text-6xl aspect-[1/0.5]"
                         >
                             {guess}
                         </Button>
