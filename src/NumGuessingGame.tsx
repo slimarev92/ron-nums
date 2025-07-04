@@ -173,22 +173,21 @@ export function NumGuessingGame() {
     };
 
     return (
-        <div class="p-5 text-5xl mt-5">
-            <div class="flex gap-12 w-full items-center justify-center mb-[20svh]">
+        <div class="flex flex-col h-svh p-10">
+            <div class="flex gap-12 w-full items-center justify-center text-6xl">
                 <For each={DOTS.slice(0, secret())}>
-                    {() => (
-                        <div
-                            class="w-5 h-5 before:content-[attr(data-dot)]"
-                            data-dot={dotOption()}
-                        />
-                    )}
+                    {() => <div class="before:content-[attr(data-dot)]" data-dot={dotOption()} />}
                 </For>
             </div>
 
-            <div class="flex gap-4 p-2 w-full justify-center">
+            <div class="flex gap-4 p-2 w-full justify-center mt-auto">
                 <For each={scrambledGuesses()}>
                     {(guess) => (
-                        <Button variant={randomButtonVariant()} onClick={() => submitGuess(guess)}>
+                        <Button
+                            variant={randomButtonVariant()}
+                            onClick={() => submitGuess(guess)}
+                            class="text-6xl aspect-[1/0.6]"
+                        >
                             {guess}
                         </Button>
                     )}
