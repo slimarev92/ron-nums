@@ -1,10 +1,10 @@
 import { DialogProvider } from './DialogProvider';
-import { GuessingGame } from './GuessingGame';
+import { NumGuessingGame } from './NumGuessingGame';
 
 export default function App() {
     return (
         <DialogProvider>
-            <GuessingGame />
+            <NumGuessingGame />
         </DialogProvider>
     );
 }

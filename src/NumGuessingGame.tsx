@@ -97,7 +97,7 @@ function randomButtonVariant(): ButtonVariants {
 
 const DOTS = Array<number>(10);
 
-export function GuessingGame() {
+export function NumGuessingGame() {
     const dialogStore = useContext(DialogContext);
 
     if (!dialogStore) {
@@ -176,7 +176,12 @@ export function GuessingGame() {
         <div class="p-5 text-5xl mt-5">
             <div class="flex gap-12 w-full items-center justify-center mb-[20svh]">
                 <For each={DOTS.slice(0, secret())}>
-                    {() => <div class="w-5 h-5">{dotOption()}</div>}
+                    {() => (
+                        <div
+                            class="w-5 h-5 before:content-[attr(data-dot)]"
+                            data-dot={dotOption()}
+                        />
+                    )}
                 </For>
             </div>
 
