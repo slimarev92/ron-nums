@@ -178,9 +178,9 @@ export function NumGuessingGame() {
             return;
         }
 
-        await document.body.requestFullscreen();
+        //await document.body.requestFullscreen();
 
-        setFullScreen(true);
+        //setFullScreen(true);
     };
 
     return (
@@ -191,7 +191,7 @@ export function NumGuessingGame() {
                 </For>
             </div>
 
-            <div class="flex flex-col md:flex-row gap-4 p-2 w-full justify-center mt-auto">
+            <div class="flex flex-col md:flex-row gap-4 p-2 w-full justify-center mt-auto max-h-[90%]">
                 <For each={scrambledGuesses()}>
                     {(guess) => (
                         <Button
