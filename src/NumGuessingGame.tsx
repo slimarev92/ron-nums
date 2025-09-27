@@ -99,6 +99,7 @@ const DOTS = Array<number>(10);
 
 export function NumGuessingGame() {
     const dialogStore = useContext(DialogContext);
+    const [fullScreen, setFullScreen] = createSignal(false);
 
     if (!dialogStore) {
         throw new Error('Dialog store does not exist');
@@ -172,8 +173,18 @@ export function NumGuessingGame() {
         }, 250);
     };
 
+    const handleFullScreenClick = async () => {
+        if (fullScreen()) {
+            return;
+        }
+
+        await document.body.requestFullscreen();
+
+        setFullScreen(true);
+    };
+
     return (
-        <div class="flex flex-col h-svh p-10">
+        <div class="flex flex-col h-svh p-10 bg-white" onClick={handleFullScreenClick}>
             <div class="flex gap-12 w-full items-center justify-center text-5xl flex-wrap">
                 <For each={DOTS.slice(0, secret())}>
                     {() => <div class="before:content-[attr(data-dot)]" data-dot={dotOption()} />}
