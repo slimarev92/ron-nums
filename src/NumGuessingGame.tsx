@@ -178,9 +178,9 @@ export function NumGuessingGame() {
             return;
         }
 
-        //await document.body.requestFullscreen();
+        await document.body.requestFullscreen();
 
-        //setFullScreen(true);
+        setFullScreen(true);
     };
 
     return (
