@@ -184,7 +184,7 @@ export function NumGuessingGame() {
     };
 
     return (
-        <div class="flex flex-col h-svh p-10 bg-white" onClick={handleFullScreenClick}>
+        <div class="flex flex-col h-[95vh] my-auto p-10 bg-white" onClick={handleFullScreenClick}>
             <div class="flex gap-12 w-full items-center justify-center text-5xl flex-wrap">
                 <For each={DOTS.slice(0, secret())}>
                     {() => <div class="before:content-[attr(data-dot)]" data-dot={dotOption()} />}
