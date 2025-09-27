@@ -197,7 +197,7 @@ export function NumGuessingGame() {
                         <Button
                             variant={randomButtonVariant()}
                             onClick={() => submitGuess(guess)}
-                            class="text-5xl aspect-[1/0.33]"
+                            class="text-6xl aspect-[1/0.33]"
                         >
                             {guess}
                         </Button>
