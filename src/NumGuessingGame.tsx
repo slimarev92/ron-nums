@@ -191,7 +191,7 @@ export function NumGuessingGame() {
                 </For>
             </div>
 
-            <div class="flex flex-col md:flex-row gap-4 p-2 w-full justify-center mt-auto max-h-[90%]">
+            <div class="flex gap-4 p-1 w-full justify-center my-auto">
                 <For each={scrambledGuesses()}>
                     {(guess) => (
                         <Button
