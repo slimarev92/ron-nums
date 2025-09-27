@@ -141,7 +141,7 @@ export function LetterGuessingGame() {
 
     return (
         <>
-            <div class="flex gap-12 w-full items-center justify-center text-5xl flex-wrap">
+            <div class="flex gap-12 w-full items-center justify-center text-9xl flex-wrap">
                 <div class="before:content-[attr(data-dot)]" data-dot={secret().emoji} />
             </div>
 

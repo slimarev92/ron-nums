@@ -22,7 +22,7 @@ export default function App() {
         <Show
             when={selection()}
             fallback={
-                <div class="w-full h-svh flex gap-5 items-center *:grow p-10 *:text-6xl">
+                <div class="flex flex-col gap-5 items-center p-10 *:text-6xl *:p-8 *:w-3/4 font-['Noto_Sans_Hebrew']">
                     <Button variant="sky" onClick={() => handleFullScreenClick('nums')}>
                         מספרים
                     </Button>
