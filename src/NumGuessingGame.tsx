@@ -1,9 +1,6 @@
-import { createMemo, createSignal, For, useContext } from 'solid-js';
-import { DialogContext } from './DialogProvider';
-import { ALL_BUTTON_VARIANTS, Button, type ButtonVariants } from './Button';
-import confetti from 'canvas-confetti';
-import goodAudio from './good.mp3';
-import wrongAudio from './wrong.mp3';
+import { createMemo, createSignal, For } from 'solid-js';
+import { Button } from './Button';
+import { getRandomInt, randomButtonVariant, useSubmitGuess } from './utils';
 
 const MAX_DOTS = 10;
 
@@ -56,14 +53,37 @@ const DOT_OPTIONS = [
     '🐱',
     '🚎',
     '🚌',
+    '⏰',
+    '👟',
+    '🪑',
+    '⚽',
+    '📖',
+    '🏠',
+    '🔑',
+    '🧦',
+    '🌙',
+    '☀️',
+    '🚗',
+    '🚲',
+    '👖',
+    '👚',
+    '🥄',
+    '🪥',
+    '🥚',
+    '🐟',
+    '🧅',
+    '🍋',
+    '🦓',
+    '🐘',
+    '🐸',
+    '🎈',
+    '🎁',
+    '🔦',
+    '🚪',
 ];
 
 function getDotOption() {
     return DOT_OPTIONS[getRandomInt(DOT_OPTIONS.length)];
-}
-
-function getRandomInt(max: number) {
-    return Math.floor(Math.random() * max);
 }
 
 function getSecret() {
@@ -85,26 +105,9 @@ function getGuesses(secret: number) {
     return [firstGuess, secondGuess];
 }
 
-function randomButtonVariant(): ButtonVariants {
-    let variant: ButtonVariants | undefined;
-
-    while (!variant) {
-        variant = ALL_BUTTON_VARIANTS[getRandomInt(ALL_BUTTON_VARIANTS.length)];
-    }
-
-    return variant;
-}
-
 const DOTS = Array<number>(10);
 
 export function NumGuessingGame() {
-    const dialogStore = useContext(DialogContext);
-    const [fullScreen, setFullScreen] = createSignal(false);
-
-    if (!dialogStore) {
-        throw new Error('Dialog store does not exist');
-    }
-
     const [secret, setSecret] = createSignal(getSecret());
     const dotOption = createMemo(() => {
         void secret();
@@ -141,50 +144,25 @@ export function NumGuessingGame() {
         return result;
     });
 
-    const submitGuess = (guess: number) => {
-        let releaseConfetti = false;
-
-        if (guess === secret()) {
-            releaseConfetti = true;
-            const audio = new Audio(goodAudio);
-
-            audio.play();
-        } else {
-            const audio = new Audio(wrongAudio);
-
-            audio.play();
-        }
-
-        setTimeout(() => {
-            if (releaseConfetti) {
-                confetti({
-                    particleCount: 1000,
-                    spread: 360,
-                });
-
-                let nextSecret = secret();
-
-                while (nextSecret === secret()) {
-                    nextSecret = getSecret();
-                }
-
-                setSecret(nextSecret);
+    const submitGuess = useSubmitGuess(
+        (guess) => guess === secret(),
+        (correct) => {
+            if (!correct) {
+                return;
             }
-        }, 250);
-    };
 
-    const handleFullScreenClick = async () => {
-        if (fullScreen()) {
-            return;
-        }
+            let nextSecret = secret();
 
-        await document.body.requestFullscreen();
+            while (nextSecret === secret()) {
+                nextSecret = getSecret();
+            }
 
-        setFullScreen(true);
-    };
+            setSecret(nextSecret);
+        },
+    );
 
     return (
-        <div class="flex flex-col h-[95vh] my-auto p-10 bg-white" onClick={handleFullScreenClick}>
+        <>
             <div class="flex gap-12 w-full items-center justify-center text-5xl flex-wrap">
                 <For each={DOTS.slice(0, secret())}>
                     {() => <div class="before:content-[attr(data-dot)]" data-dot={dotOption()} />}
@@ -204,6 +182,6 @@ export function NumGuessingGame() {
                     )}
                 </For>
             </div>
-        </div>
+        </>
     );
 }
