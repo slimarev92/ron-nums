@@ -70,6 +70,17 @@ const DOT_OPTIONS = [
     { emoji: '🎁', letter: 'מ' }, // מתנה
     { emoji: '🔦', letter: 'פ' }, // פנס
     { emoji: '🚪', letter: 'ד' }, // דלת
+    { emoji: '🐅', letter: 'ט' }, // טיגריס
+    { emoji: '🐴', letter: 'ס' }, // סוס
+    { emoji: '🦄', letter: 'ח' }, // חד קרן
+    { emoji: '🐿️', letter: 'ס' }, // סנאי
+    { emoji: '🦔', letter: 'ק' }, // קיפוד
+    { emoji: '🦇', letter: 'ע' }, // עטלף
+    { emoji: '🐨', letter: 'ק' }, // קואלה
+    { emoji: '🦘', letter: 'ק' }, // קנגרו
+    { emoji: '🦚', letter: 'ט' }, // טווס
+    { emoji: '🦜', letter: 'ת' }, // תוכי
+    { emoji: '🦉', letter: 'י' }, // ינשוף
 ];
 
 function getSecret() {
