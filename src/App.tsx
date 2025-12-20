@@ -3,8 +3,9 @@ import { DialogProvider } from './DialogProvider';
 import { NumGuessingGame } from './NumGuessingGame';
 import { LetterGuessingGame } from './LetterGuessingGame';
 import { Button } from './Button';
+import { NatureGuessingGame } from './NatureGuessingGame';
 
-type Selection = 'nums' | 'letters';
+type Selection = 'nums' | 'letters' | 'nature';
 
 export default function App() {
     const [selection, setSelection] = createSignal<Selection>();
@@ -29,6 +30,9 @@ export default function App() {
                     <Button variant="red" onClick={() => handleFullScreenClick('letters')}>
                         אותיות
                     </Button>
+                    <Button variant="emerald" onClick={() => handleFullScreenClick('nature')}>
+                        טבע{' '}
+                    </Button>
                 </div>
             }
         >
@@ -40,6 +44,9 @@ export default function App() {
                         </Match>
                         <Match when={selection() === 'nums'}>
                             <NumGuessingGame />
+                        </Match>
+                        <Match when={selection() === 'nature'}>
+                            <NatureGuessingGame />
                         </Match>
                     </Switch>
                 </DialogProvider>
